@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz form</title>
+    <style>
+        /* Basic styling for the entire page */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #009688; /* Light teal */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            cursor: default;
+        }
+        
+        /* Back to Main Page button styling */
+        .back-button {
+            display: inline-block;
+            background-color: #009688;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px; /* Rounded shape */
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        /* Back button hover effect */
+        .back-button:hover {
+            background-color: #00796b;
+            transform: scale(1.05); /* Slight enlargement on hover */
+        }
+        
+        .button-container {
+            text-align: center; /* Center the button horizontally */
+            padding-bottom: 20px; /* Spacing at the bottom */
+        }
+
+        /* Styling for the quiz container */
+        .quiz-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .quiz-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        /* Styling for the questions */
+        .quiz-question {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .quiz-question p {
+            font-weight: bold;
+            font-size: 18px;
+            color: #009688; /* Matching the other teal colors */
+        }
+
+        /* Styling for the options */
+        .options {
+            margin-top: 10px;
+        }
+
+        /* Custom styling for the entire row on hover */
+        .option-row {
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Hover effect for the entire row */
+        .option-row:hover {
+            background-color: #009688;
+            color: white; /* Change text color to white on hover */
+        }
+
+        /* Styling for the submit button */
+        button {
+            background-color: #009688;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #00796b;
+        }
+
+        /* Styling for the result section */
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Responsive design adjustments */
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .quiz-container h2 {
+                font-size: 20px;
+            }
+
+            .quiz-question p {
+                font-size: 16px;
+            }
+
+            button {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+    
+    <script>
+        function submitQuiz() {
+            const questionCount = 12; // Total number of questions
+            let unansweredQuestions = 0;
+
+            // Check if any question is unanswered
+            for (let i = 1; i <= questionCount; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selectedOption) {
+                    unansweredQuestions++;
+                }
+            }
+
+            // If there are unanswered questions, alert the user and exit the function
+            if (unansweredQuestions > 0) {
+                alert("Please answer all the questions before submitting.");
+                return; // Exit the function to prevent further processing
+            }
+
+            // Define the correct answers
+            const correctAnswers = {
+                q1: "Paris",
+                q2: "Mars",
+                q3: "Harper Lee",
+                q4: "Pacific",
+                q5: "Jupiter",
+                q6: "Brazil",
+                q7: "Washington",
+                q8: "Apple",
+                q9: "D",
+                q10: "300",
+                q11: "Mercury",
+                q12: "Asia"
+            };
+
+            // Initialize the score
+            let score = 0;
+
+            // Calculate the score
+            for (const [questionId, correctAnswer] of Object.entries(correctAnswers)) {
+                const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+                if (selectedOption && selectedOption.value === correctAnswer) {
+                    score++;
+                }
+            }
+
+            // Display the result
+            const resultElement = document.getElementById("quiz-result");
+            resultElement.textContent = `You got ${score} out of 12 correct!`;
+
+            // Provide feedback based on the score
+            if (score >= 10) {
+                resultElement.textContent += " Excellent!";
+            } else if (score >= 7) {
+                resultElement.textContent += " Good job!";
+            } else {
+                resultElement.textContent += " Better luck next time.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2 style="color:#009688">General Knowledge Quiz</h2>
+
+        <!-- Question 1 -->
+        <div class="quiz-question" id="question-1">
+            <p>-1- What is the capital of France?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q1-a" name="q1" value="Paris" class="option-radio">
+                    Paris
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q1-b" name="q1" value="London" class="option-radio">
+                    London
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q1-c" name="q1" value="Berlin" class="option-radio">
+                    Berlin
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q1-d" name="q1" value="Madrid" class="option-radio">
+                    Madrid
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-question" id="question-2">
+            <p>-2- Which planet is known as the Red Planet?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q2-a" name="q2" value="Jupiter" class="option-radio">
+                    Jupiter
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q2-b" name="q2" value="Venus" class="option-radio">
+                    Venus
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q2-c" name="q2" value="Mars" class="option-radio">
+                    Mars
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q2-d" name="q2" value="Saturn" class="option-radio">
+                    Saturn
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-question" id="question-3">
+            <p>-3- Who wrote "To Kill a Mockingbird"?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q3-a" name="q3" value="Mark Twain" class="option-radio">
+                    Mark Twain
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q3-b" name="q3" value="Harper Lee" class="option-radio">
+                    Harper Lee
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q3-c" name="q3" value="Ernest Hemingway" class="option-radio">
+                    Ernest Hemingway
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q3-d" name="q3" value="F. Scott Fitzgerald" class="option-radio">
+                    F. Scott Fitzgerald
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="quiz-question" id="question-4">
+            <p>-4- What is the largest ocean on Earth?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q4-a" name="q4" value="Atlantic" class="option-radio">
+                    Atlantic
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q4-b" name="q4" value="Indian" class="option-radio">
+                    Indian
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q4-c" name="q4" value="Pacific" class="option-radio">
+                    Pacific
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q4-d" name="q4" value="Southern" class="option-radio">
+                    Southern
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="quiz-question" id="question-5">
+            <p>-5- What is the largest planet in our solar system?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q5-a" name="q5" value="Jupiter" class="option-radio">
+                    Jupiter
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q5-b" name="q5" value="Saturn" class="option-radio">
+                    Saturn
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q5-c" name="q5" value="Earth" class="option-radio">
+                    Earth
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q5-d" name="q5" value="Neptune" class="option-radio">
+                    Neptune
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="quiz-question" id="question-6">
+            <p>-6- Which country hosted the 2016 Summer Olympics?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q6-a" name="q6" value="Australia" class="option-radio">
+                    Australia
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q6-b" name="q6" value="United States" class="option-radio">
+                    United States
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q6-c" name="q6" value="United Kingdom" class="option-radio">
+                    United Kingdom
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q6-d" name="q6" value="Brazil" class="option-radio">
+                    Brazil
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="quiz-question" id="question-7">
+            <p>-7- In which U.S. state is the city of Seattle located?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q7-a" name="q7" value="California" class="option-radio">
+                    California
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q7-b" name="q7" value="Washington" class="option-radio">
+                    Washington
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q7-c" name="q7" value="Oregon" class="option-radio">
+                    Oregon
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q7-d" name="q7" value="Nevada" class="option-radio">
+                    Nevada
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="quiz-question" id="question-8">
+            <p>-8- Which technology company makes the iPhone?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q8-a" name="q8" value="Microsoft" class="option-radio">
+                    Microsoft
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q8-b" name="q8" value="Apple" class="option-radio">
+                    Apple
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q8-c" name="q8" value="Google" class="option-radio">
+                    Google
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q8-d" name="q8" value="Samsung" class="option-radio">
+                    Samsung
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="quiz-question" id="question-9">
+            <p>-9- What is the Roman numeral for 500?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q9-a" name="q9" value="C" class="option-radio">
+                    C
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q9-b" name="q9" value="L" class="option-radio">
+                    L
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q9-c" name="q9" value="M" class="option-radio">
+                    M
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q9-d" name="q9" value="D" class="option-radio">
+                    D
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="quiz-question" id="question-10">
+            <p>-10- How many Spartans famously fought at the Battle of Thermopylae?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q10-a" name="q10" value="100" class="option-radio">
+                    100
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q10-b" name="q10" value="200" class="option-radio">
+                    200
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q10-c" name="q10" value="300" class="option-radio">
+                    300
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q10-d" name="q10" value="500" class="option-radio">
+                    500
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="quiz-question" id="question-11">
+            <p>-11- Which planet is closest to the sun?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q11-a" name="q11" value="Mercury" class="option-radio">
+                    Mercury
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q11-b" name="q11" value="Venus" class="option-radio">
+                    Venus
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q11-c" name="q11" value="Earth" class="option-radio">
+                    Earth
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q11-d" name="q11" value="Mars" class="option-radio">
+                    Mars
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="quiz-question" id="question-12">
+            <p>-12- Which is the largest continent by land area?</p>
+            <div class="options">
+                <label class="option-row">
+                    <input type="radio" id="q12-a" name="q12" value="North America" class="option-radio">
+                    North America
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q12-b" name="q12" value="Africa" class="option-radio">
+                    Africa
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q12-c" name="q12" value="Asia" class="option-radio">
+                    Asia
+                </label>
+                <label class="option-row">
+                    <input type="radio" id="q12-d" name="q12" value="Europe" class="option-radio">
+                    Europe
+                </label>
+            </div>
+        </div>
+
+        <!-- Submit Button and Results -->
+        <button id="submit-quiz" onclick="submitQuiz()">Submit</button>
+        <div id="quiz-result" class="result"></div>
+    </div>
+    
+    <!-- Styled back to main page button -->
+    <div class="button-container">
+        <a href="mainpage.html" class="back-button">&lt; Back to Main Page</a>
+    </div>
+</body>
+</html>

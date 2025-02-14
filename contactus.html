@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            color: #333;
+            text-align: center;
+            cursor: default;
+        }
+        
+        .banner {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('cus.jpg'); /* Check the image path */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: default;
+        }
+
+        /* Container for the contact form */
+        .contact-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-wrapper {
+            position: relative; /* Relative positioning for the label */
+            margin-bottom: 20px;
+        }
+
+        /* Styling for the input and textarea fields */
+        .input-wrapper input, 
+        .input-wrapper textarea {
+            width: 100%;
+            padding: 12px;
+            border: none; /* No border */
+            border-bottom: 2px solid #ddd; /* Underline */
+            font-size: 16px;
+            outline: none;
+            background: transparent;
+            transition: border-bottom 0.3s;
+        }
+
+        /* Change border color when focused */
+        .input-wrapper input:focus,
+        .input-wrapper textarea:focus {
+            border-bottom: 2px solid #009688; /* Focus color */
+        }
+
+        /* Floating label styles */
+        .input-wrapper label {
+            position: absolute;
+            top: 12px;
+            left: 10px;
+            color: #aaa;
+            transition: all 0.3s; /* Smooth transition for the label */
+            font-weight: normal; /* Avoid bold label */
+        }
+
+        /* When the input is focused or has text, move the label up */
+        .input-wrapper input:focus + label, 
+        .input-wrapper input:not(:placeholder-shown) + label,
+        .input-wrapper textarea:focus + label,
+        .input-wrapper textarea:not(:placeholder-shown) + label {
+            top: -12px; /* Move the label above the field */
+            left: 5px;
+            font-size: 12px;
+            color: #009688; /* Change color */
+        }
+
+        /* Submit button styling */
+        .btn-submit {
+            background-color: #009688;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #00796b;
+        }
+
+        /* Back to Main Page button styling */
+        .back-button {
+            display: inline-block;
+            background-color: #009688;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px; /* Space between button and CV */
+        }
+
+        .back-button:hover {
+            background-color: #00796b;
+            transform: scale(1.05);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+        }
+
+        .thank-you-message {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+            font-size: 20px;
+            color: white;
+        }
+    </style>
+    
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+            const thankYouMessage = document.getElementById("thank-you-message"); // Correct ID
+            thankYouMessage.style.display = "block"; // Make the message visible
+        }
+    </script>
+</head>
+<body>
+    <div class="banner">
+
+        <!-- Back to main page button -->
+        <div>
+            <a href="mainpage.html" class="back-button">&lt; Back to Main Page</a>
+        </div>
+        
+        <!-- Contact form container -->
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <form onsubmit="handleSubmit(event)">
+                <div class="input-wrapper">
+                    <input type="text" id="name" name="name" placeholder=" " required>
+                    <label for="name">Full Name</label>
+                </div>
+                <div class="input-wrapper">
+                    <input type="email" id="email" name="email" placeholder=" " required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-wrapper">
+                    <input type="tel" id="number" name="number" placeholder=" " required>
+                    <label for="number">Phone Number</label>
+                </div>
+                <div class="input-wrapper">
+                    <textarea id="message" name="message" placeholder=" " required></textarea>
+                    <label for="message">Message</label>
+                </div>
+                <button type="submit" class="btn-submit">Send</button>
+            </form>
+            
+            <!-- Thank-you message section -->
+            <div id="thank-you-message" class="thank-you-message">
+                THANK YOU FOR CONTACTING US!
+            </div>
+        </div>
+    </div>
+</body>
+</html>

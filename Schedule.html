@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jason Bader - University Schedule</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+			background-color: #009688; /* This is the page background, not the CV box */
+            margin: 0;
+            padding: 20px;
+			cursor:  default;
+        }
+		
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+		
+        th {
+            background-color: #242526;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+		
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+		
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+		
+		/*tr:nth-child(odd) {
+            background-color: #f8f9fa;
+        }*/
+
+        tr:hover {
+            background-color: #ddd;
+        }
+		
+		/* Back to Main Page button styling */
+        .back-button {
+            display: inline-block;
+            background-color: #009688;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px; /* Rounded shape */
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+			margin-bottom: 20px; /* Space between button and CV */
+        }
+
+        /* Back button hover effect */
+        .back-button:hover {
+            background-color: #00796b;
+            transform: scale(1.05); /* Slight enlargement on hover */
+        }
+		
+		.button-container{
+			text-align: center; /* Center the button horizontally */
+			padding-top: 20px; /* Sacing at the top */
+		}
+		
+        .no-classes {
+            font-style: italic;
+            font-weight: bold;
+            color: #555;
+        }
+		
+        .center {
+            text-align: center;
+        }
+		
+		#center1{
+			text-align: center;
+		}
+		
+        .highlight {
+            background-color: #10D9BD;
+            color: #333;
+            font-weight: bold;
+        }
+		
+		.decoration{
+			text-decoration: none;
+			color: black;
+			transition: 0.2s;
+		}
+		
+		.decoration:hover{
+			color: #009688;
+		}
+		
+		.deco{
+			background-color: #f8f9fa;
+		}
+		
+		/* Media Queries */
+
+        @media (max-width: 400px) {
+		table {
+			 display: flex;
+			 flex-direction: column;
+		 }
+
+		h, td {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+		}
+
+		th {
+			padding: 10px;
+		}
+
+		td {
+			padding: 5px;
+		}
+	}
+
+      <!-- @media (min-width: 768px) and (max-width: 500px) {
+		table {
+			 display: flex;
+			flex-direction: column;
+		}
+
+		th, td {
+			display: flex;
+			flex-direction: row;
+			 width: 100%;
+		 }
+
+		th {
+			padding: 15px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	}-->
+
+        @media (min-width: 500px) {
+		table {
+			display: table;
+		}
+
+		th, td {
+			display: table-cell;
+		}
+
+		th {
+			padding: 15px;
+		}
+
+		td {
+			padding: 15px;
+		}
+	}
+    </style>
+</head>
+<body>
+
+	<div class="button-container">
+		<a href="mainpage.html" class="back-button">&lt; Back to Main Page</a>
+		<a href="Cvv.html" class="back-button">Go to CV &gt;</a>
+    </div>
+	
+	<div align="center">
+		<table>
+		  <tr>
+			<th>Day</th>
+			<th>Time</th>
+			<th>Class</th>
+		  </tr>
+		  <tr>
+			<td class="highlight">Sunday</td>
+			<td class="highlight" colspan="2" id="center1"><span class="no-classes">No Classes</span></td>
+		  </tr>
+		  <tr class="deco">
+			<td rowspan="2"><b>Monday</b></td>
+			<td>10:50 am — 12:25 pm</td>
+			<td><a href="CSC314CourseDescription.html" class="decoration">CSC314</td>
+		  </tr>
+		  <tr>
+			<td>12:30 pm — 1:45 pm</td>
+			<td><a href="GERE210CourseDescription.html" class="decoration">GERE210</td>
+		  </tr>
+		  <tr class="deco">
+			<td rowspan="4"><b>Tuesday</b></td>
+			<td>8:00 am — 9:15 am</td>
+			<td><a href="MAT213CourseDescription.html" class="decoration">MAT213</td>
+		  </tr>
+		  <tr>
+			<td>9:30 am — 10:20 am</td>
+			<td><a href="MAT213CourseDescription2.html" class="decoration">MAT213</td>
+		  </tr>
+		  <tr class="deco">
+			<td>11:00 am — 12:15 pm</td>
+			<td><a href="CSC360CourseDescription.html" class="decoration">CSC360</td>
+		  </tr>
+		  <tr>
+			<td>1:50 pm — 3:25 pm</td>
+			<td><a href="CSC320CourseDescription.html" class="decoration">CSC320</td>
+		  </tr>
+		  <tr class="highlight">
+			<td><b>Wednesday</b></td>
+			<td colspan="2" class="center"><span class="no-classes">No Classes</span></td>
+		  </tr>
+		  <tr>
+			<td rowspan="3"><b>Thursday</b></td>
+			<td>8:00 am — 9:15 am</td>
+			<td><a href="MAT213CourseDescription.html" class="decoration">MAT213</td>
+		  </tr>
+		  <tr class="deco">
+			<td>11:00 am — 12:15 pm</td>
+			<td><a href="CSC360CourseDescription.html" class="decoration">CSC360</td>
+		  </tr>
+		  <tr>
+			<td>1:50 pm — 3:25 pm</td>
+			<td><a href="CSC320CourseDescription.html" class="decoration">CSC320</td>
+		  </tr>
+		  <tr class="deco">
+			<td rowspan="2"><b>Friday</b></td>
+			<td>10:50 am — 12:25 pm</td>
+			<td><a href="CSC314CourseDescription.html" target="blank" class="decoration">CSC314</td>
+		  </tr>
+		  <tr>
+			<td>12:30 pm — 1:45 pm</td>
+			<td><a href="GERE210CourseDescription.html" class="decoration">GERE210</td>
+		  </tr>
+		  <tr class="highlight">
+			<td><b>Saturday</b></td>
+			<td colspan="2" class="center"><span class="no-classes">No Classes</span></td>
+		  </tr>
+		</table>
+	</div>
+</body>
+</html>

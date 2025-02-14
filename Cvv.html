@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Responsive CV</title>
+    <style>
+		body {
+			font-family: 'Arial', sans-serif;
+			margin: 0;
+			padding: 20px;
+			background-color: #009688; /* This is the page background, not the CV box */
+			cursor:  default;
+		}
+		
+		.decoration{
+			text-decoration: none;
+			color: White;
+			transition: 0.4s;
+		}
+		
+		.decoration:hover{
+			color: #009688;
+		}
+		
+		.cv {
+			max-width: 800px;
+			margin: 20px auto;
+			background-color: #000000; /* CV box background set to black */
+			color: #f0f0f0; /* Light color for text to ensure readability */
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+		}
+		
+		/* Back to Main Page button styling */
+        .back-button {
+            display: inline-block;
+            background-color: #009688;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px; /* Rounded shape */
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+			margin-bottom: 20px; /* Space between button and CV */
+        }
+
+        /* Back button hover effect */
+        .back-button:hover {
+            background-color: #00796b;
+            transform: scale(1.05); /* Slight enlargement on hover */
+        }
+		
+		.button-container{
+			text-align: center; /* Center the button horizontally */
+			padding-top: 20px; /* Sacing at the top */
+		}
+
+		.header {
+			display: flex;
+			align-items: center;
+			background-color: #333333; /* Dark gray header for contrast */
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		.profile-pic {
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			border: 2px solid white; /* White border for profile picture */
+			margin-right: 20px;
+		}
+
+		.contact-info {
+			flex: 1;
+			text-align: left; /* Left-align contact information */
+		}
+
+		.contact-info h1 {
+			margin: 0;
+			color: white; /* White color for header text */
+		}
+
+		.contact-info p {
+			margin: 5px 0;
+			color: #dddddd; /* Lighter gray for contact info text */
+		}
+
+		.content {
+			margin-top: 20px;
+		}
+
+		.content section {
+			margin-bottom: 20px;
+		}
+
+		.content h2 {
+			font-size: 1.5em;
+			color: #009688; /* Make section headers teal */
+			border-bottom: 2px solid #666666; /* Light gray for section borders */
+			padding-bottom: 5px;
+		}
+		
+		.summary {
+			background-color: #111111; /* Very dark gray for summary section */
+			padding: 10px;
+			border-radius: 10px; /* Rounded corners */
+		}
+
+		.experience {
+			background-color: #222222; /* Slightly lighter gray for experience */
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		.education {
+			background-color: #333333; /* Dark gray for education */
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		.degree {
+			padding-left: 20px; /* Indent degree information */
+		}
+
+		.skills {
+			background-color: #444444; /* Medium gray for skills */
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		.job {
+			margin-top: 10px;
+		}
+
+		ul {
+			list-style-type: disc;
+			padding-left: 20px; /* Consistent padding for list items */
+		}
+
+		@media (max-width: 600px) {
+			.header {
+				flex-direction: column;
+				text-align: center; /* Center-align on smaller screens */
+			}
+
+			.profile-pic {
+				margin: 0 auto; /* Center profile picture */
+			}
+
+    </style>
+	
+	
+	
+</head>
+<body>
+	
+	<div class="button-container">
+		<a href="mainpage.html" class="back-button">&lt; Back to Main Page</a>
+		<a href="schedule.html" class="back-button">Go to Schedule &gt;</a>
+    </div>
+	
+	<!-- Cv content -->
+    <div class="cv">
+        <header class="header">
+            <img src="C:\Users\jason\Downloads\pfppro.jpg" alt="Profile Picture" class="profile-pic">
+			
+            <div class="contact-info">
+                <h1 style="color: #009688">Jason Bader</h1>
+                <p>Web Developer</p>
+                <p>Email: jasonbader22@gmail.com</p>
+                <p>Phone: +961 71 412 104</p>
+            </div>
+			
+			<!-- Social media links and icon links -->
+			<div>
+				<a href="https://x.com" target="_blank" class="decoration"><ion-icon name="logo-twitter"></ion-icon></a>
+				<a href="https://www.instagram.com/" target="_blank" class="decoration"><ion-icon name="logo-instagram"></ion-icon></a>
+				<a href="https://www.facebook.com/" target="_blank" class="decoration"><ion-icon name="logo-facebook"></ion-icon></a>
+			</div>
+        </header>
+
+        <div class="content">
+            <section class="summary">
+                <h2>Summary</h2>
+                <p>
+					Highly motivated computer scientist with 3 years of experience in software development, data science, artificial intelligence and Web Development. Skilled in C++, Java, Html, Css, JavaScript, PHP and SQL, with a strong background in agile, DevOps and machine learning Proven track record of leading development teams, contributing to open-source projects and deploying scalable applications.<br><br>
+					Excellent problem-solving skills, with a passion for creating efficient and innovative solutions. Strong team player with experience in cross-functional collaboration and project management. Committed to continuous learning and keeping up-to-date with emerging technologies. Ready to bring expertise and creativity to drive success in any Project i am involved in.
+				</p>
+            </section>
+
+            <section class="experience">
+                <h2>Experience</h2>
+				
+                <div class="job">
+                    <h3>Senior Web Developer</h3>
+                    <p><a href="https://www.apple.com/" target="_blank" class="decoration">Apple</a>, 2037 - current</p>
+                    <ul>
+                        <li>Led a team of 5 engineers to deliver high-quality software projects.</li>
+                        <li>Implemented new features and fixed bugs in existing codebase.</li>
+                    </ul>
+                </div>
+				
+                <div class="job">
+                    <h3>Web developer</h3>
+                    <p><a href="https://about.meta.com/" target="_blank" class="decoration">Meta</a>, 2026 - 2037</p>
+                    <ul>
+                        <li>Worked on full-stack web development.</li>
+                        <li>Collaborated with designers and other stakeholders.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="education">
+                <h2>Education</h2>
+                <div class="degree">
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <p><a href="https://www.usek.edu.lb/en/home" target="_blank" class="decoration">Holy Spirit University Of Kaslik</a> - Lebanon, 2022-2025</p>
+                    <p><a href="https://www.bing.com/ck/a?!&&p=6da60ee050200a4d9922ca8c25d663ed67a7e5ff875342d0e42cac0bc627b3ffJmltdHM9MTczMzI3MDQwMA&ptn=3&ver=2&hsh=4&fclid=28df995d-6f23-6dcb-1622-8be96e916cb7&psq=rosary+sisters+school+cornet+el+hamra&u=a1aHR0cHM6Ly93d3cucm9zYWlyZWNvcm5ldGVsaGFtcmEuY29tLw&ntb=1" target="_blank" class="decoration">Rosary sisters school</a> - Lebanon, 2012-2022</p>
+					<p><a href="https://www.bing.com/ck/a?!&&p=8f1e9fa010a89f9b70b32a355383d70c2e63b476f4ed0e260c65153491134f05JmltdHM9MTczMzI3MDQwMA&ptn=3&ver=2&hsh=4&fclid=28df995d-6f23-6dcb-1622-8be96e916cb7&psq=champville&u=a1aHR0cHM6Ly93d3cuY2hhbXB2aWxsZS5lZHUubGIv&ntb=1" target="_blank" class="decoration">Champville</a> - Lebanon, 2007-2012</p>
+                </div>
+            </section>
+
+            <section class="skills">
+                <h2>Skills</h2>
+                <ul>
+                    <li>JavaScript, HTML, CSS</li>
+                    <li>PHP, SQL</li>
+                    <li>C++, Java, Python, Assembly</li>
+                    <li>Project Management</li>
+                </ul>
+            </section>
+        </div>
+		
+    </div>
+	
+	<!-- Ionicons for social media icons -->
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
